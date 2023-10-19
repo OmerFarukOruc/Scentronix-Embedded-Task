@@ -1,0 +1,43 @@
+{
+    "devices": [
+        {
+            "name": "Main Belt",
+            "address": 13,
+            "deviceType": 1,
+            "motor": {
+                "torqueRegulationIdle": 500,
+                "torqueRegulation": 3000,
+                "overcurrentThreshold": 4000,
+                "stepSelection": 4,
+                "motorDriverType": 2,
+                "isClockwiseWired": true
+            }
+        },
+        {
+            "name": "Supply Gate 1",
+            "address": 14,
+            "deviceType": 1,
+            "motor": {
+                "torqueRegulationIdle": 500,
+                "torqueRegulation": 3000,
+                "overcurrentThreshold": 4000,
+                "stepSelection": 4,
+                "motorDriverType": 2,
+                "isClockwiseWired": true
+            }
+        },
+        {
+            "name": "Supply Lift",
+            "address": 15,
+            "deviceType": 1,
+            "motor": {
+                "torqueRegulationIdle": 500,
+                "torqueRegulation": 3000,
+                "overcurrentThreshold": 4000,
+                "stepSelection": 4,
+                "motorDriverType": 2,
+                "isClockwiseWired": true
+            }
+        }
+    ]
+}

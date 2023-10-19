@@ -1,0 +1,34 @@
+{
+    "devices": [
+        {
+			"name": "Pump 1",
+			"address": 1,
+			"deviceType": 2,
+			"pump": [
+				{ "index": 0, "pumpType": 2 },
+				{ "index": 1, "pumpType": 2 },
+				{ "index": 2, "pumpType": 2 },
+				{ "index": 3, "pumpType": 2 },
+				{ "index": 4, "pumpType": 2 },
+				{ "index": 5, "pumpType": 2 },
+				{ "index": 6, "pumpType": 2 },
+				{ "index": 7, "pumpType": 2 }
+			]
+        },
+        {
+			"name": "Pump 2",
+			"address": 2,
+			"deviceType": 2,
+			"outputs": [
+				{ "index": 0, "pumpType": 2 },
+				{ "index": 1, "pumpType": 2 },
+				{ "index": 2, "pumpType": 2 },
+				{ "index": 3, "pumpType": 2 },
+				{ "index": 4, "pumpType": 2 },
+				{ "index": 5, "pumpType": 2 },
+				{ "index": 6, "pumpType": 2 },
+				{ "index": 7, "pumpType": 2 }
+			]
+        },
+    ]
+}
