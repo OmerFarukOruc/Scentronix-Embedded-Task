@@ -146,7 +146,7 @@ void Senior::onReceiveResponse(uint8_t* data, uint16_t size)
     std::vector<uint8_t> vecData(data, data + size);
     Response resp = deserializeResponse(vecData);
 
-    juniors[resp.address] = STATE_IDLE; // Make sure 'resp.state' contains the current state of the junior.
+    juniors[resp.address] = STATE_IDLE; // To make sure 'resp.state' contains the current state of the junior.
 
     std::cout << "Response Type: " << static_cast<int>(resp.type) << ", Address: " << static_cast<int>(resp.address) << ", Data: ";
 
