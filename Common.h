@@ -9,7 +9,6 @@ enum State
 {
     STATE_NOT_INITIALIZED,
     STATE_IDLE,
-    STATE_BUSY,
     WAITING_FOR_CONFIG,
     CONFIGURING,
     IN_PRODUCTION,
@@ -77,6 +76,15 @@ Command deserializeCommand(const std::vector<uint8_t>& data)
     return Command(type, address, commandData);
 }
 
+std::vector<uint8_t> serializeResponse(const Response& response) 
+{
+    std::vector<uint8_t> serialized;
+    serialized.push_back(static_cast<uint8_t>(response.type));
+    serialized.push_back(response.address);
+    serialized.insert(serialized.end(), response.data.begin(), response.data.end());
+    return serialized;
+}
+
 Response deserializeResponse(const std::vector<uint8_t>& data) 
 {
     if (data.size() < 2) 
@@ -94,18 +102,6 @@ Response deserializeResponse(const std::vector<uint8_t>& data)
     }
 
     return Response(type, address, responseData);
-}
-
-std::vector<uint8_t> serializeResponse(const Response& response) 
-{
-    std::vector<uint8_t> serialized;
-    // First byte could be the response type
-    serialized.push_back(static_cast<uint8_t>(response.type));
-    // Second byte is the address
-    serialized.push_back(response.address);
-    // Append the data
-    serialized.insert(serialized.end(), response.data.begin(), response.data.end());
-    return serialized;
 }
 
 #endif // COMMON_H_
