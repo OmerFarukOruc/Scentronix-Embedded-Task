@@ -219,7 +219,7 @@ void Senior::configureDevices(const Json::Value& root, const std::string& config
 
         std::cout << "Configuring device with address: " << static_cast<int>(address) << " from " << configType << " configuration." << std::endl;
 
-        juniors[address] = STATE_NOT_INITIALIZED; // Or whatever your initial state is
+        juniors[address] = STATE_NOT_INITIALIZED;
 
         Command cmd;
         cmd.type = CONFIGURE_COMMAND;
