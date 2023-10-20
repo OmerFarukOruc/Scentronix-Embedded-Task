@@ -35,6 +35,11 @@ Arguments: Address , Device Type, TX PORT, RX PORT
 
 https://stackoverflow.com/questions/68531708/c-application-quits-without-error-on-serial-data-receive
 
+To compile source codes if needed:
+
+g++ -g Junior.cpp -o Junior -L/home/oruc/Desktop/embedded-software-developer-main/library/SerialPort -lSerialPort -ljsoncpp -I/home/oruc/Desktop/embedded-software-developer-main/library
+g++ -g Senior.cpp -o Senior -L/home/oruc/Desktop/embedded-software-developer-main/library/SerialPort -lSerialPort -ljsoncpp -I/home/oruc/Desktop/embedded-software-developer-main/library
+
 
 
 
