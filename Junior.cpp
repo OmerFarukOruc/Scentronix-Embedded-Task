@@ -66,7 +66,6 @@ void Junior::run()
 
 void Junior::onReceiveCommand(uint8_t* data, uint16_t size) 
 {
-    std::cout << "-------------------------------------------------------------------------------" << std::endl;
     std::cout << "Junior with address: " << static_cast<int>(address) << " received a command." << std::endl;
     std::cout << "Received data (" << size << " bytes): ";
     for (uint16_t i = 0; i < size; ++i) 
@@ -86,8 +85,8 @@ void Junior::onReceiveCommand(uint8_t* data, uint16_t size)
             // If the command is a CONFIGURE_COMMAND and is intended for this Junior
             if (cmdType == CONFIGURE_COMMAND && cmdAddress == this->address) 
             {
-                std::cout << "-------------------------------------------------------------------------------" << std::endl;
                 std::cout << "Found CONFIGURE_COMMAND for this Junior with address: " << static_cast<int>(this->address) << std::endl;
+
                 // Create a Command object and process it
                 Command cmd;
                 cmd.type = static_cast<CommandType>(cmdType);
@@ -106,7 +105,6 @@ void Junior::processCommand(const Command& cmd)
     {
         case CONFIGURE_COMMAND:
             std::cout << "Initializing peripherals for address: " << static_cast<int>(this->address) << std::endl;
-            std::this_thread::sleep_for(std::chrono::milliseconds(1000)); // Sleep to simulate initializing periphals and stuff etc.
             state = STATE_IDLE;
             std::cout << "[STATE_IDLE] Peripherals are initialized. Changing state to STATE_IDLE." << std::endl;
             sendStateToSenior(state);
@@ -138,8 +136,6 @@ void Junior::sendStateToSenior(State state)
 
     serialPort.sendMessage((char*)serializedResp.data(), serializedResp.size());
     std::cout << "Sent state update to Senior." << std::endl;
-    std::cout << "-------------------------------------------------------------------------------" << std::endl;
-
 }
 
 int main(int argc, char *argv[]) 
