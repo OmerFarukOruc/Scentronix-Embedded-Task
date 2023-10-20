@@ -23,6 +23,7 @@ public:
     void onReceiveResponse(uint8_t* data, uint16_t size);
     void readConfig();
     void configureDevices(const Json::Value& root, const std::string& configType);
+
 private:
     State state;
     SerialPort serialPort;
@@ -78,7 +79,6 @@ void Senior::run()
                 if (allJuniorsIdle()) 
                 {
                     state = ALL_IDLE;
-                    std::cout << "-------------------------------------------------------------------------------------------------------------" << std::endl;
                     std::cout << "All juniors are idle." << std::endl;
                 }
                 break;
@@ -100,7 +100,7 @@ void Senior::run()
 bool Senior::allJuniorsIdle() 
 {
     std::cout << "Checking if all juniors are idle..." << std::endl;
-    bool allIdle;
+    bool allIdle = true; // Assume all are idle initially
 
     for (std::map<uint8_t, State>::iterator it = juniors.begin(); it != juniors.end(); ++it)
     {
@@ -112,7 +112,6 @@ bool Senior::allJuniorsIdle()
         if (state != STATE_IDLE) 
         {
             std::cout << "Junior with address " << static_cast<int>(address) << " is not idle. State: " << state << ". Reconfiguring..." << std::endl;
-            std::cout << "-------------------------------------------------------------------------------------------------------------" << std::endl;
             allIdle = false; // At least one junior is not idle
 
             // Re-configure the non-idle junior
@@ -147,7 +146,7 @@ void Senior::onReceiveResponse(uint8_t* data, uint16_t size)
     std::vector<uint8_t> vecData(data, data + size);
     Response resp = deserializeResponse(vecData);
 
-    juniors[resp.address] = STATE_IDLE; // To make sure 'resp.address' contains the current state of the junior.
+    juniors[resp.address] = STATE_IDLE; // Make sure 'resp.state' contains the current state of the junior.
 
     std::cout << "Response Type: " << static_cast<int>(resp.type) << ", Address: " << static_cast<int>(resp.address) << ", Data: ";
 
@@ -220,7 +219,7 @@ void Senior::configureDevices(const Json::Value& root, const std::string& config
 
         std::cout << "Configuring device with address: " << static_cast<int>(address) << " from " << configType << " configuration." << std::endl;
 
-        juniors[address] = STATE_NOT_INITIALIZED; 
+        juniors[address] = STATE_NOT_INITIALIZED; // Or whatever your initial state is
 
         Command cmd;
         cmd.type = CONFIGURE_COMMAND;
