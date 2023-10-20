@@ -89,7 +89,7 @@ void Senior::run()
                 break;
 
             default:
-                // std::cerr << "Senior is in an unknown state!" << std::endl;
+                std::cerr << "Senior is in an unknown state!" << std::endl;
                 break;
         }
 
