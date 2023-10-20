@@ -29,5 +29,12 @@ Run for each slave addresses (i.e: 1,2,13,14,15)
 
 Arguments: Address , Device Type, TX PORT, RX PORT
 
+  Notes:
+
+** FASYNC Flag removed in this line within the SerialPort library "fcntl(serialPort, F_SETFL, (FNDELAY));"
+
+https://stackoverflow.com/questions/68531708/c-application-quits-without-error-on-serial-data-receive
+
+
 
 
